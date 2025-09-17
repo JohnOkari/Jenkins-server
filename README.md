@@ -94,6 +94,8 @@ Before starting, ensure you have:
 
 2. Verify artifacts are being generated locally on the Jenkins server.
 
+     ![Image 2](images/image2.png)
+
 ---
 
 ## ⚙️ Step 3: Configure Jenkins to Copy Files to NFS Server
