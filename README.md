@@ -80,6 +80,8 @@ Before starting, ensure you have:
    * Install **Suggested Plugins**.
    * Create an **Admin User** and complete setup.
 
+   You sshould see 
+   ![Image 1](images/image1.png)
 ---
 
 ## ⚙️ Step 2: Configure Jenkins Job
