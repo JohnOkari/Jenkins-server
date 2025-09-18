@@ -104,6 +104,8 @@ Before starting, ensure you have:
 
    * Go to **Manage Jenkins → Manage Plugins → Available**.
    * Search for **Publish Over SSH** and install it.
+   
+     ![Images](images/image3.png)
 
 2. **Configure SSH Access to NFS Server**
 
