@@ -100,7 +100,7 @@ This guide explains how to create a Jenkins Freestyle job to pull code from GitH
 
 ---
 
-## 1. Create the Freestyle Job
+### 1. Create the Freestyle Job
 
 1. From the Jenkins dashboard, click **New Item**.
 2. Enter a job name (e.g., `tooling-website-build`).
@@ -109,7 +109,7 @@ This guide explains how to create a Jenkins Freestyle job to pull code from GitH
 
 ---
 
-## 2. Link Your GitHub Repository (Source Code Management)
+### 2. Link Your GitHub Repository (Source Code Management)
 
 1. Under **Source Code Management**, select **Git**.
 2. In **Repository URL**, paste either:
@@ -125,7 +125,7 @@ This guide explains how to create a Jenkins Freestyle job to pull code from GitH
 
 ---
 
-## 3. Configure Build Triggers (Optional but Recommended)
+### 3. Configure Build Triggers (Optional but Recommended)
 
 1. Scroll to **Build Triggers** in job config.
 2. Tick **GitHub hook trigger for GITScm polling**.
@@ -145,7 +145,7 @@ This guide explains how to create a Jenkins Freestyle job to pull code from GitH
 
 ---
 
-## 4. Add Build Steps (Produce Artifacts)
+### 4. Add Build Steps (Produce Artifacts)
 
 1. In job config, go to **Build → Add build step → Execute shell**.
 2. Enter the build commands. Example for a static site:
@@ -166,7 +166,7 @@ This guide explains how to create a Jenkins Freestyle job to pull code from GitH
 
 ---
 
-## 5. Save and Run a Build
+### 5. Save and Run a Build
 
 1. Click **Save**.
 2. On the job page, click **Build Now**.
@@ -175,7 +175,7 @@ This guide explains how to create a Jenkins Freestyle job to pull code from GitH
 
 ---
 
-## 6. Archive Build Artifacts (Download from Jenkins UI)
+### 6. Archive Build Artifacts (Download from Jenkins UI)
 
 1. In job config, under **Post-build Actions**, click **Add post-build action → Archive the artifacts**.
 2. Set **Files to archive**, e.g.:
@@ -276,5 +276,6 @@ This marks your first **Continuous Integration (CI) pipeline** for automated web
 💡 *This project is part of the DevOps/Cloud Engineering journey to mastering CI/CD pipelines with Jenkins.*
 
 ---
+
 
 
