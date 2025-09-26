@@ -92,8 +92,6 @@ Before starting, ensure you have:
 
      ![Image 2](images/image2.png)
 
-Here’s a clean **README-style guide** you can use for your Jenkins Freestyle Job setup:
-
 ---
 
 ## Jenkins Freestyle Job Setup for GitHub Projects
@@ -201,9 +199,6 @@ This guide explains how to create a Jenkins Freestyle job to pull code from GitH
 
 ---
 
-
----
-
 ## ⚙️ Step 3: Configure Jenkins to Copy Files to NFS Server
 
 1. **Install “Publish Over SSH” Plugin**
@@ -281,4 +276,5 @@ This marks your first **Continuous Integration (CI) pipeline** for automated web
 💡 *This project is part of the DevOps/Cloud Engineering journey to mastering CI/CD pipelines with Jenkins.*
 
 ---
+
 
