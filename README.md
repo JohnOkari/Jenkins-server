@@ -1,7 +1,3 @@
-Perfect 👍 I’ll update the README to include the **correct Jenkins installation steps** (with the new key and repo method).
-
-Here’s the revised **README.md**:
-
 ---
 
 # 🚀 Tooling Website Deployment Automation with Jenkins CI
@@ -96,6 +92,116 @@ Before starting, ensure you have:
 
      ![Image 2](images/image2.png)
 
+Here’s a clean **README-style guide** you can use for your Jenkins Freestyle Job setup:
+
+---
+
+## Jenkins Freestyle Job Setup for GitHub Projects
+
+This guide explains how to create a Jenkins Freestyle job to pull code from GitHub, build artifacts, and archive them for download.
+
+---
+
+## 1. Create the Freestyle Job
+
+1. From the Jenkins dashboard, click **New Item**.
+2. Enter a job name (e.g., `tooling-website-build`).
+3. Select **Freestyle project** and click **OK**.
+4. The job configuration page will open.
+
+---
+
+## 2. Link Your GitHub Repository (Source Code Management)
+
+1. Under **Source Code Management**, select **Git**.
+2. In **Repository URL**, paste either:
+
+   * **SSH URL**: `git@github.com:ORG/REPO.git` *(recommended for private repos with SSH key)*
+   * **HTTPS URL**: `https://github.com/ORG/REPO.git` *(use GitHub username + PAT)*
+3. Add credentials by clicking **Add → Jenkins**:
+
+   * **SSH**: Choose **SSH Username with private key**, set username as `git` (or `ec2-user`), and paste the private key.
+   * **HTTPS**: Choose **Username with password**, provide GitHub username, and a **Personal Access Token (PAT)** as the password.
+4. Select the added credential from the dropdown.
+5. In **Branches to build**, set your branch (e.g., `*/main` or `*/master`).
+
+---
+
+## 3. Configure Build Triggers (Optional but Recommended)
+
+1. Scroll to **Build Triggers** in job config.
+2. Tick **GitHub hook trigger for GITScm polling**.
+3. In your GitHub repository:
+
+   * Go to **Settings → Webhooks → Add webhook**.
+   * Set **Payload URL**:
+
+     ```
+     http://<JENKINS_PUBLIC_IP_OR_DOMAIN>:8080/github-webhook/
+     ```
+   * Choose **Content type**: `application/json`.
+   * Select **Just the push event** (or push + PR).
+   * Save webhook.
+
+👉 Test it by pushing a commit to your repo.
+
+---
+
+## 4. Add Build Steps (Produce Artifacts)
+
+1. In job config, go to **Build → Add build step → Execute shell**.
+2. Enter the build commands. Example for a static site:
+
+   ```bash
+   # Print debugging info
+   echo "Branch: $GIT_BRANCH"
+   echo "Commit: $GIT_COMMIT"
+   echo "Workspace: $WORKSPACE"
+   echo "Build Number: $BUILD_NUMBER"
+
+   # Prepare artifacts folder
+   mkdir -p $WORKSPACE/artifacts/$BUILD_NUMBER
+
+   # Copy project files into artifacts
+   cp -r . $WORKSPACE/artifacts/$BUILD_NUMBER
+   ```
+
+---
+
+## 5. Save and Run a Build
+
+1. Click **Save**.
+2. On the job page, click **Build Now**.
+3. Open the build number under **Build History** → **Console Output** to monitor logs.
+4. Confirm the build steps ran successfully.
+
+---
+
+## 6. Archive Build Artifacts (Download from Jenkins UI)
+
+1. In job config, under **Post-build Actions**, click **Add post-build action → Archive the artifacts**.
+2. Set **Files to archive**, e.g.:
+
+   ```
+   artifacts/**
+   ```
+
+   Or specify patterns like:
+
+   * `target/*.jar`
+   * `build/libs/*.jar`
+   * `dist/**`
+   * `public/**`
+3. Save and run the build again.
+4. After completion, open the build page → **Artifacts** to download outputs.
+
+---
+
+✅ With this setup, your Jenkins Freestyle job will automatically pull from GitHub, build, archive artifacts, and allow downloads via the Jenkins UI.
+
+---
+
+
 ---
 
 ## ⚙️ Step 3: Configure Jenkins to Copy Files to NFS Server
@@ -175,3 +281,4 @@ This marks your first **Continuous Integration (CI) pipeline** for automated web
 💡 *This project is part of the DevOps/Cloud Engineering journey to mastering CI/CD pipelines with Jenkins.*
 
 ---
+
